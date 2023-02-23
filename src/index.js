@@ -1,17 +1,51 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  BrowserRouter,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+} from "react-router-dom";
+import "./index.css";
+import { Button, Result } from "antd";
+import { Chat, Login } from "./Pages";
+import reportWebVitals from "./reportWebVitals";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path='chat' element={<Outlet />}>
+          <Route index element={<Chat />} />
+          <Route path='login' element={<Login />} />
+          <Route
+            path='*'
+            element={<Navigate to={process.env.REACT_APP_404} />}
+          />
+        </Route>
+
+        <Route path='*' element={<Navigate to={process.env.REACT_APP_404} />} />
+
+        <Route
+          path='404'
+          element={
+            <Result
+              status='404'
+              title='404'
+              subTitle='Sorry, the page you visited does not exist.'
+              extra={
+                <Button href={process.env.REACT_APP_CHAT} type='primary'>
+                  Back Home
+                </Button>
+              }
+            />
+          }
+        ></Route>
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

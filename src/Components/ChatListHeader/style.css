@@ -1,0 +1,9 @@
+.rightBTNSColumn{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.chatListIcon{
+  width: 20px !important;
+  height: 20px !important;
+}
