@@ -24,22 +24,22 @@ const Index = () => {
             type='text'
             icon={<MdGroups className='chatListIcon' />}
             shape={"circle"}
-          ></Button>
+          />
           <Button
             type='text'
             icon={<TbCircleDashed className='chatListIcon' />}
             shape={"circle"}
-          ></Button>
+          />
           <Button
             type='text'
             icon={<MdChat className='chatListIcon' />}
             shape={"circle"}
-          ></Button>
+          />
           <Button
             type='text'
             icon={<MdMoreVert className='chatListIcon' />}
             shape={"circle"}
-          ></Button>
+          />
         </Col>
       </Row>
     </Header>
