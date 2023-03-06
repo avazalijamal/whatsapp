@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
+import { profile } from "../../Assets/img";
 import { MdMoreVert } from "react-icons/md";
 import { AiOutlineSearch } from "react-icons/ai";
 
 import { Button, Col, Image, Row, Layout, Typography } from "antd";
 const { Header } = Layout;
 
-const Index = () => {
+const Index = ({ photo }) => {
+  const [src, setSrc] = useState(photo);
+  const onError = () => setSrc(profile);
+
   return (
     <Header
       style={{
@@ -16,20 +20,21 @@ const Index = () => {
       }}
     >
       <Row width='100%' align='middle' className='currentUserInfoRow'>
-        <Col span={5}>
+        <Col style={{ width: 60 }}>
           <Image
             width={50}
             height={50}
             preview={false}
             style={{ borderRadius: "50%" }}
-            src='https://picsum.photos/200/300'
+            src={src}
+            onError={onError}
           />
         </Col>
-        <Col span={14} style={{}}>
+        <Col style={{ width: "calc(100% - 140px)" }}>
           <Typography.Title level={5}>Aliyev Ali</Typography.Title>
           <Typography.Text>Online</Typography.Text>
         </Col>
-        <Col span={5} style={{}}>
+        <Col style={{ width: 80 }}>
           <Button
             type='text'
             icon={<AiOutlineSearch className='chatListIcon' />}
