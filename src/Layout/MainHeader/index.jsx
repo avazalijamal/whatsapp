@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import "./style.css";
 import { profile } from "../../Assets/img";
+import { SideInChatSearch } from "../../Components";
 import { MdMoreVert } from "react-icons/md";
-import { AiOutlineSearch } from "react-icons/ai";
 
-import { Button, Col, Image, Row, Layout, Typography } from "antd";
+import { Button, Col, Image, Row, Layout, Typography, Popover } from "antd";
 const { Header } = Layout;
 
 const Index = ({ photo }) => {
@@ -35,16 +35,24 @@ const Index = ({ photo }) => {
           <Typography.Text>Online</Typography.Text>
         </Col>
         <Col style={{ width: 80 }}>
-          <Button
-            type='text'
-            icon={<AiOutlineSearch className='chatListIcon' />}
-            shape={"circle"}
-          />
-          <Button
-            type='text'
-            icon={<MdMoreVert className='chatListIcon' />}
-            shape={"circle"}
-          />
+          <SideInChatSearch />
+          <Popover
+            placement='bottomRight'
+            trigger='click'
+            content='Данные контакта'
+            content='Выбрать сообщения'
+            content='Данные контакта'
+            content='Данные контакта'
+            content='Данные контакта'
+            content='Данные контакта'
+            content='Данные контакта'
+          >
+            <Button
+              type='text'
+              icon={<MdMoreVert className='chatListIcon' />}
+              shape={"circle"}
+            />
+          </Popover>
         </Col>
       </Row>
     </Header>

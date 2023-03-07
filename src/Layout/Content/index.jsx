@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 import { Content } from "antd/es/layout/layout";
 import { MessageText } from "../../Components";
-import { Drawer } from "antd";
 
 const Index = () => {
   return (
@@ -72,8 +71,6 @@ const Index = () => {
         status={2}
         user={false}
       />
-
-      <Drawer title='Поиск сообщений'></Drawer>
     </Content>
   );
 };

@@ -10,6 +10,7 @@ import {
 } from "../../Components";
 import Sider from "antd/es/layout/Sider";
 import { Content } from "antd/es/layout/layout";
+
 const Index = () => {
   return (
     <Sider theme='light' width={400}>

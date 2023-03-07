@@ -3,6 +3,7 @@ import ChatSearchHeader from "./ChatSearchHeader";
 import UserInfo from "./UserInfo";
 import ChatArchiveHeader from "./ChatArchiveHeader";
 import MessageText from "./MessageText";
+import SideInChatSearch from "./SideInChatSearch";
 
 export {
   ChatListHeader,
@@ -10,4 +11,5 @@ export {
   UserInfo,
   ChatArchiveHeader,
   MessageText,
+  SideInChatSearch,
 };
