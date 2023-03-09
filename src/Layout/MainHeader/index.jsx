@@ -7,6 +7,18 @@ import { MdMoreVert } from "react-icons/md";
 import { Button, Col, Image, Row, Layout, Typography, Popover } from "antd";
 const { Header } = Layout;
 
+const _menu_ = [
+  "Данные контакта",
+  "Выбрать сообщения",
+  "Закрыть чат",
+  "Без звука",
+  "Исчезающие сообщения",
+  "Очистить чат",
+  "Удалить чат",
+  "Пожаловаться",
+  "Заблокировать",
+];
+
 const Index = ({ photo }) => {
   const [src, setSrc] = useState(photo);
   const onError = () => setSrc(profile);
@@ -39,13 +51,15 @@ const Index = ({ photo }) => {
           <Popover
             placement='bottomRight'
             trigger='click'
-            content='Данные контакта'
-            content='Выбрать сообщения'
-            content='Данные контакта'
-            content='Данные контакта'
-            content='Данные контакта'
-            content='Данные контакта'
-            content='Данные контакта'
+            content={_menu_.map((val, ind) => (
+              <Button
+                type='text'
+                style={{ display: "block", width: "100%", textAlign: "left" }}
+                key={ind}
+              >
+                {val}
+              </Button>
+            ))}
           >
             <Button
               type='text'

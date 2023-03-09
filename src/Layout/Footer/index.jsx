@@ -6,13 +6,18 @@ import { BiSmile } from "react-icons/bi";
 import { MdKeyboardVoice } from "react-icons/md";
 import { AiOutlinePaperClip } from "react-icons/ai";
 
-const Index = () => {
+const Index = ({ openCloseSmile }) => {
   return (
     <Footer className='ChatFooter'>
       <Input.Group>
         <Row align='middle'>
           <Col style={{ width: 40 }}>
-            <Button type='text' icon={<BiSmile style={{ fontSize: "20" }} />} />
+            <Button
+              type='text'
+              icon={
+                <BiSmile onClick={openCloseSmile} style={{ fontSize: "20" }} />
+              }
+            />
           </Col>
 
           <Col style={{ width: 40 }}>
