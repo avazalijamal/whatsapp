@@ -35,17 +35,18 @@ const Index = ({ message, time, status, user }) => {
   return (
     <>
       {user ? (
-        <Row className='MessageTextRight' align='middle'>
+        <Row
+          className='MessageTextRight'
+          align='middle'
+          onMouseOver={reactionShow}
+          onMouseOut={reactionHide}
+        >
           <Col className='emoji'>
             {reaction && (
               <Button shape='circle' type='text' icon={<BiSmile />} />
             )}
           </Col>
-          <Col
-            className='text'
-            onMouseOver={reactionShow}
-            onMouseOut={reactionHide}
-          >
+          <Col className='text'>
             <Space style={{ width: "100%" }} direction='vertical'>
               <Typography.Text>{message}</Typography.Text>
               <Typography.Text style={{ float: "left" }} italic>
@@ -55,12 +56,13 @@ const Index = ({ message, time, status, user }) => {
           </Col>
         </Row>
       ) : (
-        <Row className='MessageTextLeft' align='middle'>
-          <Col
-            className='text'
-            onMouseOver={reactionShow}
-            onMouseOut={reactionHide}
-          >
+        <Row
+          className='MessageTextLeft'
+          align='middle'
+          onMouseOver={reactionShow}
+          onMouseOut={reactionHide}
+        >
+          <Col className='text'>
             <Space style={{ width: "100%" }} direction='vertical'>
               <Typography.Text style={{ marginLeft: 10 }}>
                 {message}

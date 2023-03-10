@@ -77,7 +77,9 @@ const Index = ({ smile }) => {
       />
 
       <Drawer
-        bodyStyle={{ padding: 0 }}
+        bodyStyle={{
+          padding: 0,
+        }}
         placement='bottom'
         closable={false}
         open={smile}
