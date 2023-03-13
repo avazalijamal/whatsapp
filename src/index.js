@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import { Button, Result } from "antd";
-import { Chat, Login } from "./Pages";
+import { Chat, Login, Register } from "./Pages";
 import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,6 +20,8 @@ root.render(
         <Route path='chat' element={<Outlet />}>
           <Route index element={<Chat />} />
           <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register />} />
+
           <Route
             path='*'
             element={<Navigate to={process.env.REACT_APP_404} />}
