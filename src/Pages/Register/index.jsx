@@ -13,6 +13,7 @@ import { MdAlternateEmail } from "react-icons/md";
 
 const Index = () => {
   const [passInputType, setpassInputType] = useState("password");
+  const [passConfInputType, setPassConfInputType] = useState("password");
   const [enteredPassword, setEnteredPassword] = useState("");
 
   const passwordInputHandler = (event) => {
@@ -25,6 +26,16 @@ const Index = () => {
       return;
     } else {
       setpassInputType("password");
+    }
+    return;
+  };
+
+  const toggleConfPassword = () => {
+    if (passConfInputType === "password") {
+      setPassConfInputType("text");
+      return;
+    } else {
+      setPassConfInputType("password");
     }
     return;
   };
@@ -124,18 +135,18 @@ const Index = () => {
         >
           <Input
             prefix={<AiOutlineLock />}
-            type={passInputType}
+            type={passConfInputType}
             placeholder=' Confirm Password'
             bordered={false}
             className='input'
             suffix={
               <Button
-                onClick={togglePassword}
+                onClick={toggleConfPassword}
                 size='small'
                 type='text'
                 shape='circle'
                 icon={
-                  passInputType === "password" ? (
+                  passConfInputType === "password" ? (
                     <AiOutlineEyeInvisible />
                   ) : (
                     <AiOutlineEye />

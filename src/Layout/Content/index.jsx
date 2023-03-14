@@ -77,6 +77,7 @@ const Index = ({ smile }) => {
       />
 
       <Drawer
+        mask={false}
         bodyStyle={{
           padding: 0,
         }}
@@ -85,7 +86,7 @@ const Index = ({ smile }) => {
         open={smile}
         getContainer={false}
       >
-        <EmojiPicker width={"100%"} />
+        <EmojiPicker width={"100%"} emojiStyle={"google"} />
       </Drawer>
     </Content>
   );
