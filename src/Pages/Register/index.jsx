@@ -1,49 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import { profile_2 } from "../../Assets/img";
 
-import { Button, Form, Image, Input } from "antd";
-import {
-  AiOutlineUser,
-  AiOutlineLock,
-  AiOutlineEye,
-  AiOutlineEyeInvisible,
-} from "react-icons/ai";
+import { Button, Form, Image, Input, Typography, Upload } from "antd";
+import { UploadOutlined } from "@ant-design/icons";
+import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { MdAlternateEmail } from "react-icons/md";
 
 const Index = () => {
-  const [passInputType, setpassInputType] = useState("password");
-  const [passConfInputType, setPassConfInputType] = useState("password");
-  const [enteredPassword, setEnteredPassword] = useState("");
-
-  const passwordInputHandler = (event) => {
-    setEnteredPassword(event.target.value);
-  };
-
-  const togglePassword = () => {
-    if (passInputType === "password") {
-      setpassInputType("text");
-      return;
-    } else {
-      setpassInputType("password");
-    }
-    return;
-  };
-
-  const toggleConfPassword = () => {
-    if (passConfInputType === "password") {
-      setPassConfInputType("text");
-      return;
-    } else {
-      setPassConfInputType("password");
-    }
-    return;
-  };
-
   return (
     <div className='container-reg'>
-      <Form name='normal_reg' className='register-form' onFinish={""}>
-        <Form.Item>
+      <Form className='register-form' onFinish={""}>
+        <Form.Item name='profile_png_2'>
           <Image
             className='image'
             width={100}
@@ -64,7 +32,8 @@ const Index = () => {
           ]}
         >
           <Input
-            prefix={<AiOutlineUser />}
+            size='large'
+            prefix={<AiOutlineUser className='prefix' />}
             placeholder='Fullname'
             bordered={false}
             className='input'
@@ -81,7 +50,8 @@ const Index = () => {
           ]}
         >
           <Input
-            prefix={<MdAlternateEmail />}
+            size='large'
+            prefix={<MdAlternateEmail className='prefix' />}
             type='email'
             placeholder='Email'
             bordered={false}
@@ -98,29 +68,12 @@ const Index = () => {
             },
           ]}
         >
-          <Input
-            value={enteredPassword}
-            onChange={passwordInputHandler}
-            prefix={<AiOutlineLock />}
-            type={passInputType}
+          <Input.Password
+            size='large'
+            prefix={<AiOutlineLock className='prefix' />}
             placeholder='Password'
             bordered={false}
             className='input'
-            suffix={
-              <Button
-                onClick={togglePassword}
-                size='small'
-                type='text'
-                shape='circle'
-                icon={
-                  passInputType === "password" ? (
-                    <AiOutlineEyeInvisible />
-                  ) : (
-                    <AiOutlineEye />
-                  )
-                }
-              />
-            }
           />
         </Form.Item>
 
@@ -133,32 +86,33 @@ const Index = () => {
             },
           ]}
         >
-          <Input
-            prefix={<AiOutlineLock />}
-            type={passConfInputType}
+          <Input.Password
+            size='large'
+            prefix={<AiOutlineLock className='prefix' />}
             placeholder=' Confirm Password'
             bordered={false}
             className='input'
-            suffix={
-              <Button
-                onClick={toggleConfPassword}
-                size='small'
-                type='text'
-                shape='circle'
-                icon={
-                  passConfInputType === "password" ? (
-                    <AiOutlineEyeInvisible />
-                  ) : (
-                    <AiOutlineEye />
-                  )
-                }
-              />
-            }
           />
         </Form.Item>
 
-        <Form.Item style={{ textAlign: "center" }}>
+        <Form.Item name='upload'>
+          <Upload name='logo' action='/upload.do' listType='picture'>
+            <Button
+              color='rgb(49, 175, 145);'
+              htmlType='button'
+              size='large'
+              type='primary'
+              className='upload-button'
+              icon={<UploadOutlined />}
+            >
+              Upload a photo
+            </Button>
+          </Upload>
+        </Form.Item>
+
+        <Form.Item style={{ textAlign: "center" }} name='submit_button'>
           <Button
+            size='large'
             type='primary'
             htmlType='submit'
             className='register-button-reg'
@@ -166,6 +120,13 @@ const Index = () => {
             Register
           </Button>
         </Form.Item>
+
+        <Typography.Title level={5} style={{ fontWeight: "400" }}>
+          Allready have an account?
+          <Button type='link' style={{ padding: "2px" }}>
+            Login
+          </Button>
+        </Typography.Title>
       </Form>
     </div>
   );

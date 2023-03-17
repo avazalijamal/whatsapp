@@ -3,33 +3,39 @@
   height: 100vh;
   width: 100vw;
   text-align: center;
-  background-color: rgb(48 174 144);
+  background: linear-gradient( to bottom left, rgb(32, 141, 126), rgb(172, 255, 200)) ;
 }
 
 .login-form{
-  background-color: rgb(247, 238, 227);
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.541);
+  border-radius: 10px;
+  background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 40px;
-  padding-bottom: 20px;
-  min-width: 450px;
-  min-height: 200px;
+  min-width: 400px;
+  min-height: 300px;
 }
 
 .input{
-  background-color: white !important;
-}
+  border: 1px solid rgb(196, 194, 194) !important;
+  border-radius: 15px;
+  background-color: white !important;}
 
 .login-button{
-  width: 100%;
-  margin-bottom: 24px;
+  background-color: rgb(49, 175, 145);
+  width: 100%; 
+  text-align: center;
 }
 
-.register-button{ 
-  width: fit-content;
-  text-align: center;
-  color: blue;
+.image{
+  margin-bottom: 10px;
 }
+
+.prefix{
+  color: rgb(16, 109, 97);
+}
+
 

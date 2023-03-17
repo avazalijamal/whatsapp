@@ -30,6 +30,8 @@ const Index = ({ message, time, status, user }) => {
             <BsCheckAll style={{ color: "blue" }} />
           </>
         );
+      default:
+        return null;
     }
   };
   return (

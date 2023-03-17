@@ -2,14 +2,14 @@ import React from "react";
 import "./style.css";
 import { profile_2 } from "../../Assets/img";
 
-import { Button, Form, Image, Input } from "antd";
+import { Button, Form, Image, Input, Typography } from "antd";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 
 const Index = () => {
   return (
     <div className='container'>
-      <Form name='normal_login' className='login-form' onFinish={""}>
-        <Form.Item>
+      <Form className='login-form' onFinish={""}>
+        <Form.Item name='profile_png_2'>
           <Image
             className='image'
             width={100}
@@ -29,7 +29,8 @@ const Index = () => {
           ]}
         >
           <Input
-            prefix={<AiOutlineUser />}
+            size='large'
+            prefix={<AiOutlineUser className='prefix' />}
             placeholder='Username'
             bordered={false}
             className='input'
@@ -44,8 +45,9 @@ const Index = () => {
             },
           ]}
         >
-          <Input
-            prefix={<AiOutlineLock />}
+          <Input.Password
+            size='large'
+            prefix={<AiOutlineLock className='prefix' />}
             type='password'
             placeholder='Password'
             bordered={false}
@@ -54,12 +56,20 @@ const Index = () => {
         </Form.Item>
 
         <Form.Item style={{ textAlign: "center" }}>
-          <Button type='primary' htmlType='submit' className='login-button'>
+          <Button
+            size='large'
+            type='primary'
+            htmlType='submit'
+            className='login-button'
+          >
             Log in
           </Button>
-          <Button type='link' htmlType='submit' className='register-button'>
-            Register
-          </Button>
+          <Typography.Title level={5} style={{ fontWeight: "400" }}>
+            Not registered?
+            <Button type='link' style={{ padding: "2px" }}>
+              Create an Account
+            </Button>
+          </Typography.Title>
         </Form.Item>
       </Form>
     </div>
