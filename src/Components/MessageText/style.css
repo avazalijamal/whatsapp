@@ -1,7 +1,7 @@
 .MessageTextRight{
   min-width: 300px;
   width: 70%;
-  margin: 10px;
+  margin: 15px;
   float: right;
 }
 .MessageTextRight .emoji{
@@ -9,23 +9,27 @@
   text-align: right;
 }
 .MessageTextRight .text{
+  border-radius: 7.5px;
   width: calc(100% - 60px);
   margin-left: 10px;
   text-align: right;
-  background-color: aqua;
+  background-color: rgb(218, 253, 212);
   padding: 10px;
   padding-right: 30px;
 }
 
 .MessageTextRight .text::after{
-  content: '';
-  background-color: aqua;
-  width: 20px;
-  height: 20px;
-  display: inline;
+  content: "";
+  width: 0px;
+  height: 0px;
   position: absolute;
-  transform: rotateZ(45deg) translateX(20px) translateY(-8px);
-
+  border-left: 15px solid transparent;
+  border-right: 15px solid rgb(218, 253, 212); 
+  border-top: 15px solid rgb(218, 253, 212);
+  border-bottom: 15px solid transparent;
+  transform: rotateZ(270deg);
+  right: -12px;
+  top: 0;
 }
 
 .MessageTextLeft{
@@ -39,20 +43,24 @@
   text-align: right;
 }
 .MessageTextLeft .text{
+  border-radius: 7.5px;
   width: calc(100% - 60px);
   margin-left: 10px;
   text-align: left;
-  background-color: aqua;
+  background-color: white;
   padding: 10px;
 }
 
 .MessageTextLeft .text::before{
-  content: '';
-  background-color: aqua;
-  width: 20px;
-  height: 20px;
-  display: inline;
+  content: "";
+  width: 0px;
+  height: 0px;
   position: absolute;
-  transform: rotateZ(45deg) translateX(-15px) translateY(13px);
-
+  border-left: 15px solid transparent;
+  border-right: 15px solid white; 
+  border-top: 15px solid white;
+  border-bottom: 15px solid transparent;
+  transform: rotateZ(1deg);
+  left: -12px;
+  top: 0;
 }

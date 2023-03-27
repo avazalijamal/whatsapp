@@ -8,9 +8,20 @@ import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { MdAlternateEmail } from "react-icons/md";
 
 const Index = () => {
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <div className='container-reg'>
-      <Form className='register-form' onFinish={""}>
+      <Form
+        className='register-form'
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
         <Form.Item name='profile_png_2'>
           <Image
             className='image'
@@ -95,8 +106,8 @@ const Index = () => {
           />
         </Form.Item>
 
-        <Form.Item name='upload'>
-          <Upload name='logo' action='/upload.do' listType='picture'>
+        <Form.Item name='upload' valuePropName='fileList'>
+          <Upload name='photo' action='/upload.do' listType='picture'>
             <Button
               color='rgb(49, 175, 145);'
               htmlType='button'

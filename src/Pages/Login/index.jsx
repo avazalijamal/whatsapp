@@ -6,9 +6,19 @@ import { Button, Form, Image, Input, Typography } from "antd";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 
 const Index = () => {
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <div className='container'>
-      <Form className='login-form' onFinish={""}>
+      <Form
+        className='login-form'
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
         <Form.Item name='profile_png_2'>
           <Image
             className='image'
