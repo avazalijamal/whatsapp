@@ -1,7 +1,8 @@
 import React from "react";
 import "./style.css";
 import { profile_2 } from "../../Assets/img";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 import {
   Button,
@@ -13,6 +14,7 @@ import {
   Row,
   Typography,
   Upload,
+  message,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
@@ -20,8 +22,31 @@ import { MdAlternateEmail } from "react-icons/md";
 import { Content } from "antd/es/layout/layout";
 
 const Index = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const [formDOM] = Form.useForm();
+  const navigate = useNavigate();
+
   const onFinish = (values) => {
-    console.log("Success:", values);
+    // console.log("Success:", values);
+
+    const url = "https://aticiliqkursu.az/v2.0.0//signup.php";
+    const data = { ...values, photo: "profile.png" };
+
+    axios.post(url, data).then((res) => {
+      if (res.data.data.id) {
+        messageApi.open({
+          type: "success",
+          content: "Пользователь успешно зарегистрирован",
+        });
+        formDOM.resetFields();
+        navigate(process.env.REACT_APP_LOGIN);
+      } else {
+        messageApi.open({
+          type: "error",
+          content: "Неудачная попытка регистрации",
+        });
+      }
+    });
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -29,6 +54,7 @@ const Index = () => {
 
   return (
     <Layout className='Layout'>
+      {contextHolder}
       <Content className='Content-reg'>
         <Row style={{ height: "100%" }} justify={"center"} align='middle'>
           <Col xs={2} sm={4} md={6} lg={9} xl={9}></Col>
@@ -37,6 +63,7 @@ const Index = () => {
               className='register-form'
               onFinish={onFinish}
               onFinishFailed={onFinishFailed}
+              form={formDOM}
             >
               <Form.Item name='profile_png_2'>
                 <Image
@@ -50,7 +77,7 @@ const Index = () => {
               </Form.Item>
 
               <Form.Item
-                name='username'
+                name='fullName'
                 rules={[
                   {
                     required: true,
@@ -87,7 +114,7 @@ const Index = () => {
               </Form.Item>
 
               <Form.Item
-                name='password'
+                name='_password'
                 rules={[
                   {
                     required: true,
@@ -105,7 +132,7 @@ const Index = () => {
               </Form.Item>
 
               <Form.Item
-                name='confirm-password'
+                name='confirmPassword'
                 rules={[
                   {
                     required: true,
@@ -142,7 +169,7 @@ const Index = () => {
                 </Upload>
               </Form.Item>
 
-              <Form.Item style={{ textAlign: "center" }} name='submit_button'>
+              <Form.Item style={{ textAlign: "center" }}>
                 <Button
                   size='large'
                   type='primary'
