@@ -1,12 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {
-  BrowserRouter,
-  Navigate,
-  Outlet,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./index.css";
 import { Button, Result } from "antd";
 import { Chat, Login, Register } from "./Pages";
@@ -17,16 +11,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='chat' element={<Outlet />}>
-          <Route index element={<Chat />} />
-          <Route path='login' element={<Login />} />
-          <Route path='register' element={<Register />} />
-
-          <Route
-            path='*'
-            element={<Navigate to={process.env.REACT_APP_404} />}
-          />
-        </Route>
+        <Route path='login' element={<Login />} />
+        <Route path='register' element={<Register />} />
+        <Route path='chat' element={<Chat />} />
 
         <Route path='*' element={<Navigate to={process.env.REACT_APP_404} />} />
 

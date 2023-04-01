@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import "./style.css";
 import { profile_2 } from "../../Assets/img";
 import { Link } from "react-router-dom";
@@ -8,6 +9,8 @@ import { AiOutlineUser, AiOutlineLock } from "react-icons/ai";
 import { Content } from "antd/es/layout/layout";
 
 const Index = () => {
+  const url = "https://aticiliqkursu.az/v2.0.0//signin.php";
+
   const onFinish = (values) => {
     console.log("Success:", values);
   };
@@ -82,7 +85,10 @@ const Index = () => {
                 </Button>
                 <Typography.Title level={5} style={{ fontWeight: "400" }}>
                   Not registered?
-                  <Link to='/chat/register' style={{ padding: "2px" }}>
+                  <Link
+                    to={process.env.REACT_APP_REGISTER}
+                    style={{ padding: "2px" }}
+                  >
                     Create an Account
                   </Link>
                 </Typography.Title>

@@ -182,7 +182,10 @@ const Index = () => {
 
               <Typography.Title level={5} style={{ fontWeight: "400" }}>
                 Allready have an account?
-                <Link to='/chat/login' style={{ padding: "2px" }}>
+                <Link
+                  to={process.env.REACT_APP_LOGIN}
+                  style={{ padding: "2px" }}
+                >
                   Login
                 </Link>
               </Typography.Title>
