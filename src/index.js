@@ -14,9 +14,7 @@ root.render(
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         <Route path='chat' element={<Chat />} />
-
         <Route path='*' element={<Navigate to={process.env.REACT_APP_404} />} />
-
         <Route
           path='404'
           element={
