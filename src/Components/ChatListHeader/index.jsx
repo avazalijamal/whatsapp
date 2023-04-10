@@ -8,13 +8,19 @@ import { Button, Col, Image, Row, Layout, Popover, Typography } from "antd";
 const { Header } = Layout;
 
 const _menu_ = [
-  "Новая группа",
-  "Новое сообщество",
-  "Избранные сообщения",
-  "Выбрать чаты",
-  "Исчезающие сообщения",
-  "Настройки",
-  "Выйти",
+  { title: "Новая группа", onClick: null },
+  { title: "Новое сообщество", onClick: null },
+  { title: "Избранные сообщения", onClick: null },
+  { title: "Выбрать чаты", onClick: null },
+  { title: "Исчезающие сообщения", onClick: null },
+  { title: "Настройки", onClick: null },
+  {
+    title: "Выйти",
+    onClick: () => {
+      localStorage.clear();
+      window.open(process.env.REACT_APP_LOGIN, "_parent");
+    },
+  },
 ];
 
 const Index = ({ photo, fullName, email }) => {
@@ -57,13 +63,14 @@ const Index = ({ photo, fullName, email }) => {
           <Popover
             placement='bottomRight'
             trigger='click'
-            content={_menu_.map((val, ind) => (
+            content={_menu_.map(({ title, onClick }, ind) => (
               <Button
                 type='text'
                 style={{ display: "block", width: "100%", textAlign: "left" }}
                 key={ind}
+                onClick={onClick}
               >
-                {val}
+                {title}
               </Button>
             ))}
           >

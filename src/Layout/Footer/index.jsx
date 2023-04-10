@@ -16,7 +16,7 @@ const Index = ({ openCloseSmile }) => {
 
   return (
     <Footer className='ChatFooter'>
-      <Input.Group>
+      <Space.Compact>
         <Row align='middle'>
           <Col style={{ width: 40 }}>
             <Button
@@ -78,7 +78,7 @@ const Index = ({ openCloseSmile }) => {
             />
           </Col>
         </Row>
-      </Input.Group>
+      </Space.Compact>
     </Footer>
   );
 };

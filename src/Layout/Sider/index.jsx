@@ -17,7 +17,7 @@ const Index = () => {
   const [email, setEmail] = useState();
 
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user")) || {};
     const { fullName, photo, email } = user;
     setPhoto(`https://aticiliqkursu.az/v2.0.0/img/${photo}`);
     setFullname(fullName);
