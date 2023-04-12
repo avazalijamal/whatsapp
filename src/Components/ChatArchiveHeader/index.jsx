@@ -17,7 +17,7 @@ const Index = ({ count }) => {
           block
           icon={<DownSquareOutlined />}
         >
-          В архиве
+          Число Пользователей
         </Button>
       </Col>
 
