@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext, memo } from "react";
+import { ChatContext } from "../../Context";
 import "./style.css";
 import {
   ChatArchiveHeader,
@@ -11,6 +12,8 @@ import { Content } from "antd/es/layout/layout";
 import axios from "axios";
 
 const Index = () => {
+  const { chat } = useContext(ChatContext);
+
   const [photo, setPhoto] = useState("https://picsum.photos/200/300");
   const [fullName, setFullname] = useState();
   const [email, setEmail] = useState();
@@ -41,6 +44,10 @@ const Index = () => {
     });
   };
 
+  const selectUser = (id) => {
+    chat.setId(id);
+  };
+
   return (
     <Sider theme='light' width={400}>
       <ChatListHeader photo={photo} fullName={fullName} email={email} />
@@ -55,6 +62,7 @@ const Index = () => {
             name={value.fullName}
             message={value.email}
             time={value.id}
+            onClick={() => selectUser(value.id)}
           />
         ))}
       </Content>
@@ -62,4 +70,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default memo(Index);

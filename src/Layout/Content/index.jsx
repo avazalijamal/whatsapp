@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext, memo } from "react";
 import "./style.css";
 import { Content } from "antd/es/layout/layout";
 import { MessageText } from "../../Components";
 import { Drawer } from "antd";
 import EmojiPicker from "emoji-picker-react";
+import { ChatContext } from "../../Context";
 
 const Index = ({ smile }) => {
+  const { chat } = useContext(ChatContext);
+  console.log(chat);
   return (
     <Content
       style={{
@@ -92,4 +95,4 @@ const Index = ({ smile }) => {
   );
 };
 
-export default Index;
+export default memo(Index);

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import "./style.css";
 import { Button, Col, Image, Row, Space, Typography } from "antd";
 import { profile } from "../../Assets/img";
 import { BsChevronDown } from "react-icons/bs";
 
-const Index = ({ photo, name, message, time }) => {
+const Index = ({ photo, name, message, time, onClick }) => {
   const [status, setStatus] = useState(false);
   const [src, setSrc] = useState(photo);
 
@@ -21,6 +21,7 @@ const Index = ({ photo, name, message, time }) => {
       className='UserInfoRow'
       onMouseOver={Show}
       onMouseLeave={Hidden}
+      onClick={onClick}
     >
       <Col span={5}>
         <Image
@@ -54,4 +55,4 @@ const Index = ({ photo, name, message, time }) => {
   );
 };
 
-export default Index;
+export default memo(Index);

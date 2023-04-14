@@ -16,69 +16,68 @@ const Index = ({ openCloseSmile }) => {
 
   return (
     <Footer className='ChatFooter'>
-      <Space.Compact>
-        <Row align='middle'>
-          <Col style={{ width: 40 }}>
+      <Row align='middle'>
+        <Col style={{ width: 40 }}>
+          <Button
+            shape='circle'
+            type='text'
+            icon={
+              <BiSmile onClick={openCloseSmile} style={{ fontSize: "20" }} />
+            }
+          />
+        </Col>
+
+        <Col style={{ width: 40 }}>
+          <Popover
+            placement='top'
+            trigger='click'
+            open={clip}
+            content={
+              <Space direction='vertical'>
+                <Button shape='circle' type='text' icon={<FaPoll />} />
+                <Button
+                  shape='circle'
+                  type='text'
+                  icon={<BsFillPersonFill />}
+                />
+                <Button shape='circle' type='text' icon={<GrDocument />} />
+                <Button shape='circle' type='text' icon={<AiFillCamera />} />
+                <Button shape='circle' type='text' icon={<BsSticky />} />
+                <Button shape='circle' type='text' icon={<BsImage />} />
+              </Space>
+            }
+          >
             <Button
               shape='circle'
               type='text'
               icon={
-                <BiSmile onClick={openCloseSmile} style={{ fontSize: "20" }} />
+                <AiOutlinePaperClip
+                  onClick={clipHandler}
+                  style={{ fontSize: "20" }}
+                />
               }
             />
-          </Col>
+          </Popover>
+        </Col>
 
-          <Col style={{ width: 40 }}>
-            <Popover
-              placement='top'
-              trigger='click'
-              open={clip}
-              content={
-                <Space direction='vertical'>
-                  <Button shape='circle' type='text' icon={<FaPoll />} />
-                  <Button
-                    shape='circle'
-                    type='text'
-                    icon={<BsFillPersonFill />}
-                  />
-                  <Button shape='circle' type='text' icon={<GrDocument />} />
-                  <Button shape='circle' type='text' icon={<AiFillCamera />} />
-                  <Button shape='circle' type='text' icon={<BsSticky />} />
-                  <Button shape='circle' type='text' icon={<BsImage />} />
-                </Space>
-              }
-            >
-              <Button
-                shape='circle'
-                type='text'
-                icon={
-                  <AiOutlinePaperClip
-                    onClick={clipHandler}
-                    style={{ fontSize: "20" }}
-                  />
-                }
-              />
-            </Popover>
-          </Col>
+        <Col style={{ width: "calc(100% - 120px)" }}>
+          <Input
+            style={{ backgroundColor: "white" }}
+            bordered={false}
+            size='large'
+            placeholder='Введите сообщение'
+          />
+        </Col>
 
-          <Col style={{ width: "calc(100% - 120px)" }}>
-            <Input
-              style={{ backgroundColor: "white" }}
-              bordered={false}
-              size='large'
-              placeholder='Введите сообщение'
-            />
-          </Col>
-
-          <Col style={{ width: 40 }}>
-            <Button
-              shape='circle'
-              type='text'
-              icon={<MdKeyboardVoice style={{ fontSize: "20" }} />}
-            />
-          </Col>
-        </Row>
-      </Space.Compact>
+        <Col style={{ width: 40 }}>
+          <Button
+            style={{ marginLeft: "5px" }}
+            shape='circle'
+            type='text'
+            icon={<MdKeyboardVoice style={{ fontSize: "20" }} />}
+          />
+        </Col>
+      </Row>
     </Footer>
   );
 };
