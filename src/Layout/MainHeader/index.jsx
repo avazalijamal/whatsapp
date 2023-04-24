@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { ChatContext } from "../../Context";
+
 import "./style.css";
 import { profile } from "../../Assets/img";
 import { SideInChatSearch } from "../../Components";
 import { MdMoreVert } from "react-icons/md";
+import axios from "axios";
 
 import { Button, Col, Image, Row, Layout, Typography, Popover } from "antd";
 const { Header } = Layout;
@@ -20,8 +23,21 @@ const _menu_ = [
 ];
 
 const Index = ({ photo }) => {
+  const { chat } = useContext(ChatContext);
+  const { id, setId } = chat;
+
   const [src, setSrc] = useState(photo);
   const onError = () => setSrc(profile);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const url = "https://aticiliqkursu.az/v2.0.0//showUser.php";
+    axios.get(url, { params: { id } }).then((res) => {
+      const { data } = res.data;
+      setUser(data);
+      setSrc(`https://aticiliqkursu.az/v2.0.0/img/${data?.photo}`);
+    });
+  }, [id]);
 
   return (
     <Header
@@ -43,8 +59,8 @@ const Index = ({ photo }) => {
           />
         </Col>
         <Col style={{ width: "calc(100% - 140px)" }}>
-          <Typography.Title level={5}>Aliyev Ali</Typography.Title>
-          <Typography.Text>Online</Typography.Text>
+          <Typography.Title level={5}>{user?.fullName}</Typography.Title>
+          <Typography.Text>{user?.email}</Typography.Text>
         </Col>
         <Col style={{ width: 80 }}>
           <SideInChatSearch />
