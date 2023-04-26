@@ -14,7 +14,11 @@ const Index = ({ smile }) => {
 
   useEffect(() => {
     const url = "https://aticiliqkursu.az/v2.0.0//select.php";
-    const params = { _sendId: user?.id, _acceptId: chat?.id, pag: -1 };
+    const params = {
+      _sendId: user?.id,
+      _acceptId: chat?.id,
+      pag: -1,
+    };
 
     if (user?.id && chat?.id) {
       axios.get(url, { params }).then((res) => {
@@ -23,7 +27,7 @@ const Index = ({ smile }) => {
         setMessages(message);
       });
     }
-  }, [chat.id]);
+  }, [chat.id, user.id]);
 
   return (
     <Content
@@ -40,7 +44,7 @@ const Index = ({ smile }) => {
           message={val.message}
           time={val.begDate}
           status={val._status}
-          user={val._senId === user.id}
+          user={val._sendId === user.id}
         />
       ))}
 

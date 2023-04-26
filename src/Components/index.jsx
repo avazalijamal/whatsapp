@@ -6,6 +6,7 @@ import MessageText from "./MessageText";
 import SideInChatSearch from "./SideInChatSearch";
 import NewChatHeader from "./NewChatHeader";
 import ContactListNewChatHeader from "./ContactListNewChatHeader";
+import NoChatPage from "./NoChatPage";
 
 export {
   ChatListHeader,
@@ -16,4 +17,5 @@ export {
   SideInChatSearch,
   NewChatHeader,
   ContactListNewChatHeader,
+  NoChatPage,
 };

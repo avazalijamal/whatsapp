@@ -15,6 +15,7 @@ const Index = ({ photo, name, message, time, onClick }) => {
 
   return (
     <Row
+      cursor='pointer'
       width='100'
       align='middle'
       style={{ backgroundColor: status && "rgb(240, 242, 245)" }}
